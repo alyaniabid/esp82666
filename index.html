@@ -98,7 +98,7 @@
     function star() {
      let data1;
          $(function(){
-             $.get("index.php", function(data){
+             $.get("https://alyaniabid.000webhostapp.com/api/index.php", function(data){
                  data1=data;
                //jQuery.parseJSON(data)
                if (data.sortie.btn1=="off"){btn1.src="off.png";btn1.value=0;}else{btn1.src="on.png";btn1.value=1;}
@@ -123,10 +123,10 @@
 /////////////////////
 
 /////////////////////////////////////////////////////7
-function cc(element) {var xhr = new XMLHttpRequest();xhr.open("GET", "ecrire.php?action=output_update&id="+element.id+"&state=on", true);
+function cc(element) {var xhr = new XMLHttpRequest();xhr.open("GET", "https://alyaniabid.000webhostapp.com/api/ecrire.php?action=output_update&id="+element.id+"&state=on", true);
     if (element.value==0){element.src = 'on.png';element.value=1; 
    }
-else { xhr.open("GET", "ecrire.php?action=output_update&id="+element.id+"&state=off", true);
+else { xhr.open("GET", "https://alyaniabid.000webhostapp.com/api/ecrire.php?action=output_update&id="+element.id+"&state=off", true);
     element.src = 'off.png';element.value=0;
    
 }xhr.send()
