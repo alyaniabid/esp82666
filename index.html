@@ -1,165 +1,244 @@
 <!DOCTYPE html>
-<html>
- <head>
-   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <!--
-  <link rel="shortcut icon" type="image/ico" href="img/favicon.gif" />
-   <link rel="stylesheet" type="text/css" href="style.css" />
-   -->
-   <title> titre </title>
- </head>
-  <body style="background-color:#A4A4A4;">
-     <h1 align="center">ESP8266</h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <!-- include Firebase SDK -->
+       
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/USBHD.ico" > 
+    <link rel="stylesheet" href="style.css">
 
-    <div id="container">
+    <title>abid</title>
+    
+
+    <!-- include Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+
+    <script>
+      // Replace with your app config object
+     
+        const firebaseConfig = {
+  apiKey: "AIzaSyDk3QClJn6Q3wnMYNofIw2IYiKFat5wZIY",
+  authDomain: "esp8266firebaseabid.firebaseapp.com",
+  databaseURL: "https://esp8266firebaseabid-default-rtdb.firebaseio.com",
+  projectId: "esp8266firebaseabid",
+  storageBucket: "esp8266firebaseabid.appspot.com",
+  messagingSenderId: "604925891325",
+  appId: "1:604925891325:web:b77ce2c62d27006d0de494"
+};
+
+      // Initialize firebase
+      firebase.initializeApp(firebaseConfig);
+
+      // Make auth and database references
+      const auth = firebase.auth();
+      const db = firebase.database();
+
+    </script>
+
+    <!-- include highchartsjs to build the charts-->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <!-- include to use jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--include icons from fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- include Gauges Javascript library-->
+    <script src="https://cdn.rawgit.com/Mikhus/canvas-gauges/gh-pages/download/2.1.7/all/gauge.min.js"></script>
+  
+    
+  
+    </head>
+<body>
+    <header>
+        <div class="containert"id=div13>
+            
+            <div> <a style="text-align: left;font-size: 0.5em;"id="user-details"></a> </div><div></div>
+            <div><a href="#"style="text-align: left;font-size: 2.5em; color:red;">ESP8266 </a></div>
+            <div>
+                
+            </div>
+            <div> 
+            </div>
+            <div>   <a href="#contact">Contact me<i href="#contact"  class="fas fa-phone"></i></a>    </div>
+        </div>
+
+        <div class="containert"id=div13>
+                <div><p style="text-align: left;"id="lastUpdate">Last update:</p></div>
+                <div></div><div></div><div></div>     
+                <div></div>  
+                <div></a><img id="logout-link" style="justify-content: space-between;
+                 align-items: center;height: 20px; cursor: pointer;text-align: center;
+                 padding-right: 5px;padding-left: 45%;" src="images/out.png">
+         </div>   
+        </div>   
+    </header>
+    <section class="projects"></section>        
+     
+    <section class="projects" id="services2"style="display:block;" >
+
+        <form id="login-form" > <!--</form>"-->
+        <div class="form-elements-container">
+          <label for="input-email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Username" id="input-email" required>
+  
+          <label for="input-password"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" id="input-password" required>
+  
+          <button type="submit" id="login-button">Login</button>
+          <p id="error-message" style="color:red;"></p>
+        </div>
+      </form>
+      <p><span id="authentication-status"></span>
+      
+    </section>
+    <script>
+
+    </script>
+    <section class="projects" id="services3">
+        <div class="container"id="div11">
+            <div>
+                <h3 width: 85px>led1</h3>
+                <img id="led1" value=0  style="padding:0; height: 65px; ;width: 95%; "
+                    >
+            </div>
+            <div>
+                <h3 width: 85px>led2</h3>
+                <img id="led2" value=0  style="padding:0;height: 65px; ;width: 95%; "
+                    >
+            </div>
+            <div>
+                <h3 width: 85px >led3</h3>
+                <img id="led3" b3.value=0  style="padding:0;height: 65px; ;width: 95%; "
+                   >
+            </div>
+            <div>
+                <h3 width: 85px >led4</h3>
+                <img id="led4" value=0   style="padding:0;height: 65px; ;width:95%; "
+                   >
+            </div>
+            <div>
+                <h3 width: 85px >led5</h3>
+                <img id="led5" value=0   style="padding:0;height: 65px; ;width:95%; "
+                    src="">
+            </div>
+            <div>
+                <h3>led6</h3>
+                <img id="led6" value=0   style="padding:0;height: 65px; ;width: 95%; "
+                    src="">
+            </div>
+          </div>
+      <div class="container">
         <div>
-            <h3 width: 85px>led1</h3>
-            <img id="btn1" value=0 onclick="cc(this)" style="height: 65px; ;width: 95%; "
+            <h3 width: 85px>btn1</h3>
+            <img id="btn1" value=0  style="padding:0; height: 65px; ;width: 95%; "
                 src="">
         </div>
         <div>
-            <h3 width: 85px>led2</h3>
-            <img id="btn2" value=0 onclick="cc(this)" style="height: 65px; ;width: 95%; "
+            <h3 width: 85px>btn2</h3>
+            <img id="btn2" value=0 onclick="cc(this)" style="padding:0;height: 65px; ;width: 95%; "
                 src="">
         </div>
         <div>
-            <h3 width: 85px >led3</h3>
-            <img id="btn3" b3.value=0 onclick="cc(this)" style="height: 65px; ;width: 95%; "
+            <h3 width: 85px >btn3</h3>
+            <img id="btn3" b3.value=0 onclick="cc(this)" style="padding:0;height: 65px; ;width: 95%; "
                 src="">
         </div>
         <div>
-            <h3 width: 85px >led4</h3>
-            <img id="btn4" value=0  onclick="cc(this)" style="height: 65px; ;width:95%; "
+            <h3 width: 85px >btn4</h3>
+            <img id="btn4" value=0  onclick="cc(this)" style="padding:0;height: 65px; ;width:95%; "
                 src="">
         </div>
         <div>
-            <h3 width: 85px >led5</h3>
-            <img id="btn5" value=0  onclick="cc(this)" style="height: 65px; ;width:95%; "
+            <h3 width: 85px >btn5</h3>
+            <img id="btn5" value=0  onclick="cc(this)" style="padding:0;height: 65px; ;width:95%; "
                 src="">
         </div>
         <div>
-            <h3>led6</h3>
-            <img id="btn6" value=0  onclick="cc(this)" style="height: 65px; ;width: 95%; "
+            <h3>btn6</h3>
+            <img id="btn6" value=0  onclick="cc(this)" style="padding:0;height: 65px; ;width: 95%; "
                 src="">
         </div>
       </div>
-    <div id="container">
-        <div>
-            <h3 width: 85px>btn1</h3>
-            <img id="led1"  style="width: 85%; ;height: width; " src="">
-        </div>
-         <div>
-            <h3 width: 85px>btn2</h3>
-            <img id="led2"  style="width: 85%; ;height: width; " src="">
-        </div>
-         <div>
-            <h3 width: 85px>btn3</h3>
-            <img id="led3"  style="width: 85%;height: width; " src="">
-        </div>
-         <div>
-            <h3 width: 85px>btn4</h3>
-            <img id="led4"  style=" width: 85%;height: width; " src="">
-        </div>
-         <div>
-            <h3 width: 85px>btn5</h3>
-            <img id="led5"  style="width: 85%;height: width; " src="">
-        </div>
-         <div>
-            <h3 width: 85px>btn6</h3>
-            <img id="led6"  style="width: 85%;height: width; " src="">
-        </div>
-     
-    </div> 
-       
-     <div id="container">
-  <div id="gauge_div" style="width:90%;display: block;margin-left: auto;
-    margin-right: auto;text-align:center; height: 90%;"></div></div>
-        <style>
-        
-#container { display: block;
-    margin-left: auto;
-    margin-right: auto;
- width:100%;
- max-width: 900px;
- text-align:center;
-}
-#container > div {
- width: calc(100% / 6.5);  
- display: inline-block;
- vertical-align: top;   
- text-align:center;
-}
-        </style>
-       <script src="jquery.js"></script>
+    </section>
+    <section class="projects" id="services4">
+        <div class="content">
+            <div class="card">
+               
+                <div class="info">
+                    <h3>Température</h3>
+                    <p><span class="reading"><span id="temp"></span> &deg;C</span></p>
+                    Gauges: <input type="checkbox" id="gauges-checkbox" name="gauges-checkbox" unchecked>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-thermometer-half" style="color:#f72424;"></i> 
+                </div>
 
-     <script>
-                let num = 0;
- let timerId = setInterval("star()", 1000);
-    function star() {
-     let data1;
-         $(function(){
-             $.get("index.php", function(data){
-                 data1=data;
-               //jQuery.parseJSON(data)
-               if (data.sortie.btn1=="off"){btn1.src="off.png";btn1.value=0;}else{btn1.src="on.png";btn1.value=1;}
-               if (data.sortie.btn2=="off"){btn2.src="off.png";btn2.value=0;}else{btn2.src="on.png";btn2.value=1;}
-               if (data.sortie.btn3=="off"){btn3.src="off.png";btn3.value=0;}else{btn3.src="on.png";btn3.value=1;}
-               if (data.sortie.btn4=="off"){btn4.src="off.png";btn4.value=0;}else{btn4.src="on.png";btn4.value=1;}
-               if (data.sortie.btn5=="off"){btn5.src="off.png";btn5.value=0;}else{btn5.src="on.png";btn5.value=1;}
-               if (data.sortie.btn6=="off"){btn6.src="off.png";btn6.value=0;}else{btn6.src="on.png";btn6.value=1;}
-                  console.log(data.sortie) 
-                  ///////////////////////////////////////////////
-                if (data.entree.led1=="1"){led1.src="vert1.png";}else{led1.src="vert2.png";}
-                if (data.entree.led2=="1"){led2.src="vert1.png";}else{led2.src="vert2.png";}
-                if (data.entree.led3=="1"){led3.src="vert1.png";}else{led3.src="vert2.png";}
-                if (data.entree.led4=="1"){led4.src="vert1.png";}else{led4.src="vert2.png";}
-                if (data.entree.led5=="1"){led5.src="vert1.png";}else{led5.src="vert2.png";}
-                if (data.entree.led6=="1"){led6.src="vert1.png";}else{led6.src="vert2.png";}
-                changeTemp(data.entree.AN1);
-             });
-         } );
-       
-}
-/////////////////////
+                    <div class="icon" id ="gauges-divt" style="display : none;">                
+                        <canvas id="gauge-temperature"style="padding-bottom:  auto;"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="info">
+                    <h3>humidité</h3>
+                    <p><span class="reading"><span id="hum"></span> &percnt;</span></p>
+                    Gauges: <input type="checkbox" id="cards-checkbox" name="cards-checkbox" unchecked>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-tint" style="color:#00add6;"></i>
+                </div>
+                <div class="icon" id ="gauges-divh"style="display :none;">                
+                    <canvas id="gauge-humidity"></canvas>
+            </div>
+            </div>
 
-/////////////////////////////////////////////////////7
-function cc(element) {var xhr = new XMLHttpRequest();xhr.open("GET", "ecrire.php?action=output_update&id="+element.id+"&state=on", true);
-    if (element.value==0){element.src = 'on.png';element.value=1; 
-   }
-else { xhr.open("GET", "ecrire.php?action=output_update&id="+element.id+"&state=off", true);
-    element.src = 'off.png';element.value=0;
-   
-}xhr.send()
-}</script>
+            
+        </div>
+    </section>
+
+
+
+    <section class="cards contact" id="contact">
  
- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
-    google.charts.load('current', {'packages':['gauge']});
-    google.charts.setOnLoadCallback(drawGauge);
+        <h2 class="title">Hello, I'm abid</h2><h2 class="title"> technicien electrique</span></h2>
+        <div class="content">
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div class="info">
+                    <h3>Phone</h3>
+                    <p>+21622223676</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="info">
+ 
+                    <h3>Email</h3>
+                    <p>alyaniabid@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    var gaugeOptions = {min: 0, max: 1023, yellowFrom: 700, yellowTo: 950,
-      redFrom: 950, redTo: 1023, minorTicks: 5};
-    var gauge;
-
-    function drawGauge() {
-      gaugeData = new google.visualization.DataTable();
-      gaugeData.addColumn('number', 'Engine');
-      gaugeData.addColumn('number', 'Torpedo');
-      gaugeData.addRows(2);
-      gaugeData.setCell(0, 0, 45);
-      gaugeData.setCell(0, 1, 80);
-
-      gauge = new google.visualization.Gauge(document.getElementById('gauge_div'));
-      gauge.draw(gaugeData, gaugeOptions);
-    }
-
-    function changeTemp(dir) {
-    //  gaugeData.setValue(0, 0, gaugeData.getValue(0, 0) + dir );
-      gaugeData.setValue(0, 0,  dir );
-      gauge.draw(gaugeData, gaugeOptions);
-    }
-  </script>
- </body>
+    <footer class="footer">
+        <p class="footer-title">Copyrights @ <span>alyani abid</span></p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+    
+    <script src="scripts/auth.js"></script>
+   
+    <script src="scripts/gauges-definition.js"></script>
+    <script src="scripts/indexe.js"></script>
+</body>
 </html>
-
-
