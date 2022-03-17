@@ -64,12 +64,12 @@ function epochToJsDate(epochTime){
               gaugeT.value = jsonData.temperature;
               gaugeH.value =jsonData.humidity;
               updateElement.innerHTML = epochToDateTime(timestamp);
-              if(jsonData.btn1==1){Btn1.src="vert1.png";}else if(jsonData.btn1==0){Btn1.src="VERT2.png";}
-              if(jsonData.btn2==1){Btn2.src="vert1.png";}else if(jsonData.btn2==0){Btn2.src="VERT2.png";}
-              if(jsonData.btn3==1){Btn3.src="vert1.png";}else if(jsonData.btn3==0){Btn3.src="VERT2.png";}
-              if(jsonData.btn4==1){Btn4.src="vert1.png";}else if(jsonData.btn4==0){Btn4.src="VERT2.png";}
-              if(jsonData.btn5==1){Btn5.src="vert1.png";}else if(jsonData.btn5==0){Btn5.src="VERT2.png";}
-              if(jsonData.btn6==1){Btn6.src="vert1.png";}else if(jsonData.btn6==0){Btn6.src="VERT2.png";}
+              if(jsonData.btn1==1){Btn1.src="vert1.png";}else if(jsonData.btn1==0){Btn1.src="vert2.png";}
+              if(jsonData.btn2==1){Btn2.src="vert1.png";}else if(jsonData.btn2==0){Btn2.src="vert2.png";}
+              if(jsonData.btn3==1){Btn3.src="vert1.png";}else if(jsonData.btn3==0){Btn3.src="vert2.png";}
+              if(jsonData.btn4==1){Btn4.src="vert1.png";}else if(jsonData.btn4==0){Btn4.src="vert2.png";}
+              if(jsonData.btn5==1){Btn5.src="vert1.png";}else if(jsonData.btn5==0){Btn5.src="vert2.png";}
+              if(jsonData.btn6==1){Btn6.src="vert1.png";}else if(jsonData.btn6==0){Btn6.src="vert2.png";}
               
     });
     var chartPath = 'UsersData/' + uid.toString()+'/led/led' ;
